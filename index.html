@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <link type="text/css" rel="stylesheet" href="./sty.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>我</div>
+<div>是</div>
+<div>吴</div>
+<div>彦</div>
+<div>祖</div>
+
+<script>
+
+
+    window.jQuery = function(nodeOrSelector) {
+        let nodes = {}
+        if (typeof nodeOrSelector === 'string') {
+            let tmp = document.querySelectorAll(nodeOrSelector);
+            for(var i =0; i < tmp.length; i++){
+                nodes[i] = tmp[i];
+            }
+            nodes.length = i;
+        } else if (nodeOrSelector instanceof Node) {
+            nodes = {
+                0: nodeOrSelector,
+                length: 1
+            }
+        }
+        nodes.addClass = function(classs) {
+            for (let i = 0; i < nodes.length; i++) {
+                nodes[i].classList.add(classs);
+            }
+        }
+        nodes.setText = function(text){
+            for (let i = 0; i < nodes.length; i++) {
+                nodes[i].textContent = text;
+            }
+        }
+        return nodes;
+    }
+
+    window.$ = jQuery
+
+</script>
+
+</body>
+</html>
